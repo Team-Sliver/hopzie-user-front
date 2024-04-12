@@ -25,3 +25,8 @@ export async function getChannelData(
         return null
     }
 }
+
+export async function productClickUpdate({productUid} : {productUid : string}) {
+    
+    
+}
