@@ -1,19 +1,19 @@
-interface Content {
+export interface Content {
     title: string;
     image: string;
     linkUrl: string;
 }
 
-interface Product {
+export interface Product {
     uid: string;
     title: string;
     imageUrl: string;
-    price: string;
+    price: string | null;
     originalPrice: string | null;
     linkUrl: string;
 }
 
-interface Channel {
+export interface Channel {
     title: string;
     profileImageUrl: string;
     bannerUrl: string;
