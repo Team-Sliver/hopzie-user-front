@@ -1,18 +1,12 @@
 import { Product } from "@/recoil/make/types";
-import {Button, Image} from "@nextui-org/react";
+import {Image} from "@nextui-org/react";
+import { commonTextStyle } from "./fontStyle";
 
 export function ProductCard(
-    {product, onClick} : {product : Product, onClick : () => void}) {
-
-        const commonTextStyle = {
-            letterSpacing : '-0.15px', 
-            lineHeight : '20px',
-            fontFamily : "Pretendard", 
-            fontStyle : "none",
-        }
+    {product, onClick, index} : {product : Product, onClick : () => void, index : number}) {
 
         return (
-            <div key={product.uid} className="group relative bg-white mb-4">
+            <div key={index} className="group relative bg-white mb-4">
                 <button
                     onClick={(e) => {
                         e.preventDefault();
@@ -63,12 +57,13 @@ function ProductSection({ productList } : { productList : Product[]}) {
 
     return (
         <div className="grid grid-cols-2 gap-x-[14px] gap-y-[20px]">
-            {productList.map((value) => (
+            {productList.map((product, index) => (
                 <ProductCard 
-                    product={value}
+                    product={product}
                     onClick={() => {
-                        window.open(value.linkUrl, '_blank', 'noopener,noreferrer');
+                        window.open(product.linkUrl, '_blank', 'noopener,noreferrer');
                     }}
+                    index={index}
                 />
             ))}
         </div>
