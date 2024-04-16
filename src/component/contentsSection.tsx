@@ -67,7 +67,10 @@ function ContentsSection({ channel, channelNickname } : { channel : Channel, cha
                 className="ml-[12px]"
                 onClick={() => onClickHandler(`${isMobile ? "m" : "www"}.youtube.com/watch?v=${contentId}`)}
               >
-                <p className="text-base text-gray-600 font-normal" style={commonTextStyle}>{channel.content.title}</p>
+                <h3 className="text-sm text-gray-700 line-clamp-2">
+                        <span aria-hidden="true" className="absolute inset-0" style={commonTextStyle}/>
+                        {channel.content.title}
+                </h3>
                 <p className="text-gray-600 text-sm"  style={commonTextStyle}>by. {channel.title}</p>
               </div>
             </div>

@@ -16,7 +16,6 @@ import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
 export function CustomPage() {
     const [screenSize, setScreenSize] = useState('');
     const setCustomPage = useSetRecoilState(customPageState);
-    const [searchText, setsearchText] = useState('');
     const { channelNickname, uid } = useParams();
 
     useEffect(() => {
@@ -66,13 +65,9 @@ export function CustomPage() {
                         mb={16}
                     />
                     <SearchSection 
-                        value={searchText}
                         placeholder="찾고있는 상품을 검색해보세요."
                         icon="/search.svg"
                         endIcon="/xmark.circle.fill.svg"
-                        onChange={(searchValue) => {
-                            setsearchText(searchValue)
-                        }}
                     />
                     <ProductSection 
                         productList={customPage?.products ?? []}
