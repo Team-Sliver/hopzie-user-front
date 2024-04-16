@@ -9,8 +9,6 @@ export async function getChannelData(
 ): Promise<ChannelData | null> {
     const url = `${apiEndpoint}/${apiVersion}/custompages/${channelNickname}/${uid}${referrer}`
 
-    console.log('url : ', url)
-
     try {
         const response = await fetch(url)
 
@@ -27,6 +25,16 @@ export async function getChannelData(
 }
 
 export async function productClickUpdate({productUid} : {productUid : string}) {
-    
-    
+    const url = `${apiEndpoint}/${apiVersion}/products/${productUid}`
+
+    fetch(url)
+        .then((response) => {
+          if (response.status === 200) {
+          } else {
+            console.error("[Issue]:", response.status);
+          }
+        })
+        .catch((error) => {
+          console.error("[Error]:", error);
+    });
 }

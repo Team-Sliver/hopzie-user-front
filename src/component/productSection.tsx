@@ -1,6 +1,7 @@
 import { Product } from "@/recoil/make/types";
 import {Image} from "@nextui-org/react";
 import { commonTextStyle } from "./fontStyle";
+import { productClickUpdate } from "@/lib/api/response/api-repositoy";
 
 export function ProductCard(
     {product, onClick, index} : {product : Product, onClick : () => void, index : number}) {
@@ -11,7 +12,7 @@ export function ProductCard(
                     onClick={(e) => {
                         e.preventDefault();
                         onClick()
-                        // onClickHandler(product.uid, product.linkUrl);
+                        productClickUpdate({productUid : product.uid})
                     }}
                     className="aspect-h-1 aspect-w-1 w-full overflow-hidden border border-gray-400 rounded-[1rem]"
                     >
