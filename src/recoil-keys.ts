@@ -1,4 +1,5 @@
 export const recoilKeys = {
     customPageAtom : 'customPageAtom',
-    customPageAtomPersist : 'customPageAtomPersist'
+    customPageAtomPersist : 'customPageAtomPersist',
+    searchPageAtom : 'searchPageAtom',
 }

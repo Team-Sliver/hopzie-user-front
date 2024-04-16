@@ -2,6 +2,8 @@ import { Product } from "@/recoil/make/types";
 import {Image} from "@nextui-org/react";
 import { commonTextStyle } from "./fontStyle";
 import { productClickUpdate } from "@/lib/api/response/api-repositoy";
+import { useRecoilState } from "recoil";
+import { searchPageState } from "@/recoil/make/serch-page-data";
 
 export function ProductCard(
     {product, onClick, index} : {product : Product, onClick : () => void, index : number}) {
@@ -51,14 +53,19 @@ export function ProductCard(
 }
 
 function ProductSection({ productList } : { productList : Product[]}) {
+    const [searchText, setsearchText] = useRecoilState(searchPageState);
 
-    if(productList?.length == 0) {
+    const filteredProducts = productList.filter(product => 
+      product.title.toLowerCase().includes(searchText.toLowerCase())
+    );
+
+    if(filteredProducts?.length == 0) {
         return <div>내용이 비었습니다.</div>
     }
 
     return (
         <div className="grid grid-cols-2 gap-x-[14px] gap-y-[20px]">
-            {productList.map((product, index) => (
+            {filteredProducts.map((product, index) => (
                 <ProductCard 
                     product={product}
                     onClick={() => {
