@@ -57,35 +57,39 @@ export function CustomPage() {
     const customPage = customPageLoadble.contents
 
     return (
-        <div className="flex items-center justify-center mt-[40px]">
-            <div className="flex flex-col w-full sm:max-w-md">
-                <BannerSection 
-                    bannerUrl={customPage?.channel.bannerUrl}
-                />
-                <BasicTitle
-                    text="콘텐츠 제품 정보"
-                    textSize={18}
-                    textWeight={500}
-                    mb={24}
-                />
-                <ProductSection 
-                    productList={customPage?.products ?? []}
-                />
+        <div className="flex justify-center">
+            <div className="flex flex-col w-full sm:max-w-md sm:border">
+                <div className="mx-[12px]">
+                    <BannerSection 
+                        bannerUrl={customPage?.channel.bannerUrl}
+                    />
+                    <BasicTitle
+                        text="콘텐츠 제품 정보"
+                        textSize={18}
+                        textWeight={500}
+                        mb={24}
+                    />
+                    <ProductSection 
+                        productList={customPage?.products ?? []}
+                    />
+                </div>
                 <div className="bg-gray-100 w-full h-4 mt-[30px] mb-[50px]"/>
-                <BasicTitle
-                    text="콘텐츠 정보"
-                    textSize={18}
-                    textWeight={500}
-                    mb={24}
-                />
-                <ContentsSection 
-                    channel={customPage?.channel!}
-                    channelNickname="@choimona"
-                />
-                <ShareLinkSection
-                    channel={customPage?.channel!}
-                    channelNickname="@choimona"
-                />
+                <div className="mx-[12px]">
+                    <BasicTitle
+                        text="콘텐츠 정보"
+                        textSize={18}
+                        textWeight={500}
+                        mb={24}
+                    />
+                    <ContentsSection 
+                        channel={customPage?.channel!}
+                        channelNickname="@choimona"
+                    />
+                    <ShareLinkSection
+                        channel={customPage?.channel!}
+                        channelNickname="@choimona"
+                    />
+                </div>
                 <Fotter />
             </div>
         </div>

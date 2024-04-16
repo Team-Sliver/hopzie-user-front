@@ -13,7 +13,7 @@ function BannerSection({ bannerUrl } : { bannerUrl? : string }) {
           isBlurred
           src={bannerUrl}
           alt="banner"
-          className="w-full h-[98px] object-cover rounded-[10px] mb-[30px]"
+          className="w-full h-[98px] object-cover rounded-[10px] mb-[30px] mt-[40px]"
         />
     )
 }
