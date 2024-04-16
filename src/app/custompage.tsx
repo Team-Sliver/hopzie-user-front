@@ -4,6 +4,7 @@ import BannerSection from "@/component/bannerSection";
 import ContentsSection from "@/component/contentsSection";
 import Fotter from "@/component/fotter";
 import ProductSection from "@/component/productSection";
+import ShareLinkSection from "@/component/shareLinkSection";
 import { BasicTitle } from "@/component/titleComponent";
 import { customPageState, getCustomPageData } from "@/recoil/make/custom-page-server-data";
 import { useParams } from "next/navigation";
@@ -78,6 +79,10 @@ export function CustomPage() {
                     mb={24}
                 />
                 <ContentsSection 
+                    channel={customPage?.channel!}
+                    channelNickname="@choimona"
+                />
+                <ShareLinkSection
                     channel={customPage?.channel!}
                     channelNickname="@choimona"
                 />

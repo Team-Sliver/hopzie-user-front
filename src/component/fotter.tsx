@@ -3,7 +3,7 @@ import { commonTextStyle } from './fontStyle';
 
 const Footer: React.FC = () => {
   return (
-    <div className="bg-gray-100 px-3 py-6 ring-1 ring-gray-900/10 mt-[150px]">
+    <div className="bg-gray-100 px-3 py-6 ring-1 ring-gray-900/10 mt-[80px]">
       <p className="text-sm text-gray-400 text-center" style={commonTextStyle}>
         상품 가격과 재고 수량은 상황에 따라 달라질 수 있습니다.
         <br />
