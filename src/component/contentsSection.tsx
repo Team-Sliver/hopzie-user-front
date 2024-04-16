@@ -57,14 +57,15 @@ function ContentsSection({ channel, channelNickname } : { channel : Channel, cha
                 ></iframe>
             </div>
             <div className="flex items-start mt-[16px]">
-              <img
-                className="inline-block h-14 w-14 rounded-full"
-                src={channel.profileImageUrl}
-                alt="profile_image"
-                onClick={() => onClickHandler(`${isMobile ? "m" : "www"}.youtube.com/${channelNickname}`)}
-              />
-              <div
-                className="ml-[12px]"
+              <button onClick={() => onClickHandler(`${isMobile ? "m" : "www"}.youtube.com/${channelNickname}`)}>
+                <img
+                  className="inline-block rounded-full"
+                  src={channel.profileImageUrl}
+                  alt="profile_image"
+                />
+              </button>
+              <button
+                className="flex flex-col ml-[12px] justify-start"
                 onClick={() => onClickHandler(`${isMobile ? "m" : "www"}.youtube.com/watch?v=${contentId}`)}
               >
                 <h3 className="text-sm text-gray-700 line-clamp-2">
@@ -72,7 +73,7 @@ function ContentsSection({ channel, channelNickname } : { channel : Channel, cha
                         {channel.content.title}
                 </h3>
                 <p className="text-gray-600 text-sm"  style={commonTextStyle}>by. {channel.title}</p>
-              </div>
+              </button>
             </div>
         </div>
     )
