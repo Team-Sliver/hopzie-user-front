@@ -8,13 +8,12 @@ import { SearchSection } from "@/component/searchSection";
 import ShareLinkSection from "@/component/shareLinkSection";
 import { BasicTitle } from "@/component/titleComponent";
 import { customPageState, getCustomPageData } from "@/recoil/make/custom-page-server-data";
-import { searchPageState } from "@/recoil/make/serch-page-data";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
 
 export function CustomPage() {
-    const [screenSize, setScreenSize] = useState('');
+    const [screenSize, setScreenSize] = useState('sm:max-w-md sm:border');
     const setCustomPage = useSetRecoilState(customPageState);
     const { channelNickname, uid } = useParams();
 
@@ -26,20 +25,38 @@ export function CustomPage() {
                 setCustomPage(data);
         });
 
-        function handleResize() {
-            const width = window.innerWidth
-            if (width >= 2560) {
-                setScreenSize('xl:w-1/6')
-            } else if (width >= 1920) {
-                setScreenSize('xl:w-1/5')
+        // Initial resize handler to set the screenSize state based on the initial window width
+        function handleInitialResize() {
+            const width = window.innerWidth;
+
+            if (width >= 1080) {
+                setScreenSize('lg:max-w-screen-xl');
             } else {
-                setScreenSize('xl:w-1/4')
+                setScreenSize('sm:max-w-md sm:border');
             }
         }
-        handleResize()
-        window.addEventListener('resize', handleResize)
-        return () => window.removeEventListener('resize', handleResize)
-    }, [])
+    
+        // Call the initial resize handler
+        handleInitialResize();
+    
+        // Event listener for window resize
+        function handleResize() {
+            const width = window.innerWidth;
+            if (width >= 1080) {
+                setScreenSize('lg:max-w-screen-xl');
+            } else {
+                setScreenSize('sm:max-w-md sm:border');
+            }
+        }
+    
+        // Add event listener for window resize
+        window.addEventListener('resize', handleResize);
+    
+        // Cleanup function to remove event listener
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     const customPageLoadble = useRecoilValueLoadable(
         customPageState
@@ -52,39 +69,46 @@ export function CustomPage() {
     const customPage = customPageLoadble.contents
 
     return (
-        <div className="flex justify-center">
-            <div className="flex flex-col w-full sm:max-w-md sm:border">
-                <div className="mx-[12px]">
+        <div className="flex flex-col justify-center items-center">
+            <div className={`${screenSize}`}>
+                <div className="flex flex-col mx-[12px] justfiy-center items-center">
                     <BannerSection 
                         bannerUrl={customPage?.channel.bannerUrl}
                     />
-                    <BasicTitle
-                        text="콘텐츠 제품 정보"
-                        textSize={18}
-                        textWeight={500}
-                        mb={16}
-                    />
-                    <SearchSection 
-                        placeholder="찾고있는 상품을 검색해보세요."
-                        icon="/search.svg"
-                        endIcon="/xmark.circle.fill.svg"
-                    />
+                    <div className="flex sm:max-w-md w-full flex-col justfiy-center items-center">
+                            <div className="flex w-full items-start justify-start">
+                                <BasicTitle
+                                    text="콘텐츠 제품 정보"
+                                    textSize={18}
+                                    textWeight={500}
+                                    mb={16}
+                                />
+                            </div>
+                                <SearchSection 
+                                    placeholder="찾고있는 상품을 검색해보세요."
+                                    icon="/search.svg"
+                                    endIcon="/xmark.circle.fill.svg"
+                                />
+                    </div>
                     <ProductSection 
                         productList={customPage?.products ?? []}
                     />
                 </div>
                 <div className="bg-gray-100 w-full h-4 mt-[30px] mb-[50px]"/>
-                <div className="mx-[12px]">
-                    <BasicTitle
-                        text="콘텐츠 정보"
-                        textSize={18}
-                        textWeight={500}
-                        mb={24}
-                    />
-                    <ContentsSection 
+                <div className="flex flex-col mx-[12px] justfiy-center items-center">
+                <div className="flex sm:max-w-md w-full flex-col justfiy-center items-center">
+                    <div className="flex w-full items-start justify-start">
+                        <BasicTitle
+                            text="콘텐츠 정보"
+                            textSize={18}
+                            textWeight={500}
+                            mb={24}
+                        />
+                    </div>
+                        <ContentsSection 
                         channel={customPage?.channel!}
-                        channelNickname="@choimona"
-                    />
+                        channelNickname="@choimona"/>
+                    </div>
                     <ShareLinkSection
                         channel={customPage?.channel!}
                         channelNickname="@choimona"

@@ -9,12 +9,14 @@ function BannerSection({ bannerUrl } : { bannerUrl? : string }) {
     }
 
     return (
-        <Image
-          isBlurred
-          src={bannerUrl}
-          alt="banner"
-          className="w-full h-[98px] object-cover rounded-[10px] mb-[30px] mt-[40px]"
-        />
+        <div className="flex justify-center">
+            <Image
+            //   isBlurred
+              src={bannerUrl}
+              alt="banner"
+              className="w-full h-[98px] object-cover rounded-[10px] mb-[30px] mt-[40px]"
+            />
+        </div>
     )
 }
   

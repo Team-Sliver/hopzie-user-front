@@ -16,7 +16,7 @@ export function BasicTitle(
 
     return (
         <div>
-            <p className="flex flex-row" style={textStyle}>{text}</p>
+            <p style={textStyle}>{text}</p>
         </div>
     )
 }
