@@ -4,13 +4,12 @@ import { commonTextStyle } from "./fontStyle";
 import { productClickUpdate } from "@/lib/api/response/api-repositoy";
 import { useRecoilState } from "recoil";
 import { searchPageState } from "@/recoil/make/serch-page-data";
-import { useEffect, useState } from "react";
 
 export function ProductCard(
     {product, onClick, index} : {product : Product, onClick : () => void, index : number}) {
 
         return (
-            <div key={index} className="group relative bg-white mb-4 w-52">
+            <div key={index} className="flex flex-col group relative bg-white mb-4 max-w-52">
                 <button
                     onClick={(e) => {
                         e.preventDefault();
@@ -54,26 +53,7 @@ export function ProductCard(
 }
 
 function ProductSection({ productList } : { productList : Product[]}) {
-    const [gridCol, setgridCol] = useState(2);
     const [searchText, setsearchText] = useRecoilState(searchPageState);
-
-    useEffect(() => {
-
-        function handleResize() {
-            const width = window.innerWidth
-
-            if (width >= 1920) {
-                setgridCol(6)
-            } else if (width >= 1080) {
-                setgridCol(4)
-            } else {
-                setgridCol(2)
-            }
-        }
-        handleResize()
-        window.addEventListener('resize', handleResize)
-        return () => window.removeEventListener('resize', handleResize)
-    }, [])
 
     const filteredProducts = productList.filter(product => 
       product.title.toLowerCase().includes(searchText.toLowerCase())
@@ -84,7 +64,7 @@ function ProductSection({ productList } : { productList : Product[]}) {
     }
 
     return (
-        <div className={`grid grid-cols-${gridCol} gap-x-[14px] gap-y-[20px] justify-between`}>
+        <div className={`grid lg:grid-cols-4 grid-cols-2 gap-x-[14px] gap-y-[20px] justify-between`}>
             {filteredProducts.map((product, index) => (
                 <ProductCard 
                     product={product}

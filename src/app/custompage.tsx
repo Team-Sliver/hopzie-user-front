@@ -18,44 +18,11 @@ export function CustomPage() {
     const { channelNickname, uid } = useParams();
 
     useEffect(() => {
-
         // 이전 페이지 레퍼럴 알아내기
         const referrer = typeof window !== 'undefined' ? `?referrer=${encodeURIComponent(document.referrer)}` : '';   
         getCustomPageData({ channelNickname: "@choimona", uid: "0NqIvQ", referrer }).then(data => {
                 setCustomPage(data);
         });
-
-        // Initial resize handler to set the screenSize state based on the initial window width
-        function handleInitialResize() {
-            const width = window.innerWidth;
-
-            if (width >= 1080) {
-                setScreenSize('lg:max-w-screen-xl');
-            } else {
-                setScreenSize('sm:max-w-md sm:border');
-            }
-        }
-    
-        // Call the initial resize handler
-        handleInitialResize();
-    
-        // Event listener for window resize
-        function handleResize() {
-            const width = window.innerWidth;
-            if (width >= 1080) {
-                setScreenSize('lg:max-w-screen-xl');
-            } else {
-                setScreenSize('sm:max-w-md sm:border');
-            }
-        }
-    
-        // Add event listener for window resize
-        window.addEventListener('resize', handleResize);
-    
-        // Cleanup function to remove event listener
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
     }, []);
 
     const customPageLoadble = useRecoilValueLoadable(
@@ -70,7 +37,8 @@ export function CustomPage() {
 
     return (
         <div className="flex flex-col justify-center items-center">
-            <div className={`${screenSize}`}>
+            {/* <div className={`${screenSize}`}> */}
+            <div className="max-w-md border lg:border-none lg:max-w-screen-xl">
                 <div className="flex flex-col mx-[12px] justfiy-center items-center">
                     <BannerSection 
                         bannerUrl={customPage?.channel.bannerUrl}
