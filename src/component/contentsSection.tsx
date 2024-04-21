@@ -1,6 +1,6 @@
 import { openOutLink } from "@/lib/api/response/outlink-function";
 import { Channel, Content } from "@/recoil/make/types";
-import { Image } from "@nextui-org/react";
+import { Avatar, Image } from "@nextui-org/react";
 import { useEffect } from "react";
 import { isMobile } from "react-device-detect";
 import { commonTextStyle } from "./fontStyle";
@@ -74,21 +74,17 @@ function ContentsSection({
           }}
         ></iframe>
       </div>
-      <div className="flex w-full items-start mt-[16px]">
-        <Image
-          height={130}
-          width={130}
-          className="inline-block rounded-full"
-          src={channel.profileImageUrl}
-          alt="profile_image"
-          onClick={() =>
+      <div className="flex flex-row w-full items-start mt-[16px]">
+      <Avatar 
+      src={channel.profileImageUrl}
+      className="w-[54px] h-[54px] flex-none" 
+      onClick={() =>
             onClickHandler(
               `${isMobile ? "m" : "www"}.youtube.com/${channelNickname}`
             )
-          }
-        />
-        <div
-          className="ml-[12px]"
+          }/>
+        <span
+          className="ml-[12px] w-full flex-1"
           onClick={() =>
             onClickHandler(
               `${isMobile ? "m" : "www"}.youtube.com/watch?v=${contentId}`
@@ -104,7 +100,7 @@ function ContentsSection({
           <p className="text-gray-600 text-sm" style={commonTextStyle}>
             by. {channel.title}
           </p>
-        </div>
+        </span>
       </div>
     </div>
   );
