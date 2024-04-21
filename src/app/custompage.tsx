@@ -13,14 +13,13 @@ import { useEffect, useState } from "react";
 import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
 
 export function CustomPage() {
-    const [screenSize, setScreenSize] = useState('sm:max-w-md sm:border');
     const setCustomPage = useSetRecoilState(customPageState);
     const { channelNickname, uid } = useParams();
 
     useEffect(() => {
         // 이전 페이지 레퍼럴 알아내기
         const referrer = typeof window !== 'undefined' ? `?referrer=${encodeURIComponent(document.referrer)}` : '';   
-        getCustomPageData({ channelNickname: "@choimona", uid: "0NqIvQ", referrer }).then(data => {
+        getCustomPageData({ channelNickname: "@offweb", uid: "025RMMS", referrer }).then(data => {
                 setCustomPage(data);
         });
     }, []);
@@ -30,14 +29,13 @@ export function CustomPage() {
     )
 
     if(customPageLoadble.state != 'hasValue') {
-        return <div>Loading...</div>
+        return 
     }
 
     const customPage = customPageLoadble.contents
 
     return (
         <div className="flex flex-col justify-center items-center">
-            {/* <div className={`${screenSize}`}> */}
             <div className="max-w-md border lg:border-none lg:max-w-screen-xl">
                 <div className="flex flex-col mx-[12px] justfiy-center items-center">
                     <BannerSection 
@@ -67,7 +65,7 @@ export function CustomPage() {
                 <div className="flex sm:max-w-md w-full flex-col justfiy-center items-center">
                     <div className="flex w-full items-start justify-start">
                         <BasicTitle
-                            text="콘텐츠 정보"
+                            text={customPage?.channel!.content.linkUrl === '' ? '' : '콘텐츠 정보'}
                             textSize={18}
                             textWeight={500}
                             mb={24}

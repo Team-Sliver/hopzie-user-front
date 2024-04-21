@@ -8,17 +8,18 @@ import { commonTextStyle } from "./fontStyle";
 function ContentsSection({ channel, channelNickname } : { channel : Channel, channelNickname : string}) {
 
     if(channel === undefined) {
+      // 로딩중
         return (
             <div>
-                Loading...
             </div>
         )
     }
 
 
     if(channel.content.linkUrl === '') {
+      // 컨텐츠가 없음.
         return (
-            <div>컨텐츠가 없음.</div>
+            <div></div>
         )
     }
 

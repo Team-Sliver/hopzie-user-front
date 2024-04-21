@@ -60,7 +60,7 @@ function ProductSection({ productList } : { productList : Product[]}) {
     );
 
     if(filteredProducts?.length == 0) {
-        return <div>내용이 비었습니다.</div>
+        return <div>검색 결과가 없습니다.</div>
     }
 
     return (
