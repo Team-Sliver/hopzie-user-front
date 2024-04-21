@@ -22,7 +22,7 @@ export async function generateMetadata({
     referrer: referrer,
   });
 
-  let pageTitle = decodeURIComponent(channelNickname);
+  let pageTitle = decodeURIComponent(channelNickname).replace('@', '');
   const contentTitle = response?.channel.content.title;
   if (contentTitle) {
     // 여기서 크롬탭에 표시되는 이름 설정하기.
@@ -33,7 +33,7 @@ export async function generateMetadata({
     openGraph: {
       type: "website",
     //   url: '홉지 url'
-      title: `${channelNickname}의 상품을 구경해보세요.`,
+      title: `${pageTitle}의 상품을 구경해보세요.`,
     //   description: "My Website Description",
       siteName: "Hopzie",
       images: [
