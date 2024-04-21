@@ -9,7 +9,7 @@ export function ProductCard(
     {product, onClick, index} : {product : Product, onClick : () => void, index : number}) {
 
         return (
-            <div key={index} className="flex flex-col group relative bg-white mb-4 max-w-52">
+            <div className="flex flex-col group relative bg-white mb-4 max-w-52">
                 <button
                     onClick={(e) => {
                         e.preventDefault();
@@ -66,7 +66,8 @@ function ProductSection({ productList } : { productList : Product[]}) {
     return (
         <div className={`grid lg:grid-cols-4 grid-cols-2 gap-x-[14px] gap-y-[20px] justify-between`}>
             {filteredProducts.map((product, index) => (
-                <ProductCard 
+                <ProductCard
+                    key={product.uid}
                     product={product}
                     onClick={() => {
                         window.open(product.linkUrl, '_blank', 'noopener,noreferrer');

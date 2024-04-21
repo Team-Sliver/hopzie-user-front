@@ -35,7 +35,7 @@ export function CustomPage({
     }).then((data) => {
       setCustomPage(data);
     });
-  }, []);
+  }, [channelNickname, uid, customPageState, setCustomPage]);
 
   const customPageLoadble = useRecoilValueLoadable(customPageState);
 
