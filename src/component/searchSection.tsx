@@ -1,5 +1,5 @@
 import { searchPageState } from "@/recoil/make/serch-page-data"
-import { Button } from "@nextui-org/react"
+import { Button, Image } from "@nextui-org/react"
 import { useState } from "react"
 import { useRecoilState } from "recoil"
 
@@ -36,7 +36,9 @@ export function SearchSection({
                             transform: 'translateY(-50%)',
                         }}
                         >
-                        <img
+                        <Image
+                        height={56}
+                        width={56}
                             src={icon}
                             alt="Icon"
                             className="h-[16px] w-[16px] opacity-40"
@@ -76,10 +78,11 @@ export function SearchSection({
                             transform: 'translateY(-50%)',
                         }}
                         >
-                        <img
+                        <Image
+                            height={20}
+                            width={20}
                             src={endIcon}
                             alt="Icon"
-                            className="h-[20px] w-[20px]"
                         />
                     </Button>
             </form>
