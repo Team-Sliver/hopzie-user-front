@@ -15,11 +15,9 @@ export function SearchSection({
     const [searchText, setsearchText] = useState('');
     const [searchRecoilText, setsearchRecoilText] = useRecoilState(searchPageState);
 
-    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            setsearchRecoilText(searchText)
-        }
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setsearchRecoilText(searchText);
     };
 
     return (
@@ -27,6 +25,7 @@ export function SearchSection({
             <form
                 className="flex w-full"
                 style={{ position: 'relative', width: '100%' }}
+                onSubmit={handleSubmit}
                 >
                      <div
                         style={{
@@ -53,7 +52,6 @@ export function SearchSection({
                                     setsearchRecoilText('')
                                 }
                             }}
-                            onKeyDown={handleKeyDown}
                             style={{
                                 borderRadius: '100px',
                                 borderColor: '#D0D7DE',
