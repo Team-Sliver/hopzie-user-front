@@ -76,9 +76,9 @@ function ContentsSection({
       </div>
       <div className="flex w-full items-start mt-[16px]">
         <Image
-          height={56}
-          width={56}
-          className="inline-block h-14 w-14 rounded-full"
+          height={130}
+          width={130}
+          className="inline-block rounded-full"
           src={channel.profileImageUrl}
           alt="profile_image"
           onClick={() =>
