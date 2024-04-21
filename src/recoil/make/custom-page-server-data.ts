@@ -1,25 +1,27 @@
 import { recoilKeys } from "@/recoil-keys";
-import { atom } from "recoil";
+import { atom, atomFamily } from "recoil";
 import { ChannelData } from "./types";
 import { getChannelData } from "@/lib/api/response/api-repositoy";
 import { recoilPersist } from "recoil-persist";
 
-async function getCustomPageData () {
+export async function getCustomPageData ({channelNickname, uid, referrer} : {channelNickname : string, uid : string, referrer : string}) {
+    // 여기 변수로 바꿔야함.
     const data = await getChannelData({
-        channelNickname : "@choimona",
-        uid : "0NqIvQ"
+        channelNickname : channelNickname,
+        uid : uid,
+        referrer : referrer
     })
     return data
 }
 
-const { persistAtom } = recoilPersist({
-    key: recoilKeys.customPageAtomPersist,
-    storage: typeof window !== 'undefined' ? sessionStorage : undefined,
-});
+// const { persistAtom } = recoilPersist({
+//     key: recoilKeys.customPageAtomPersist,
+//     storage: typeof window !== 'undefined' ? sessionStorage : undefined,
+// });
 
 
-export const hopziePagesState = atom<ChannelData | null>({
+export const customPageState = atom<ChannelData | null>({
     key: recoilKeys.customPageAtom,
-    default: getCustomPageData(),
-    effects_UNSTABLE: [persistAtom],
+    default: null,
+    // effects_UNSTABLE: [persistAtom],
 });

@@ -1,12 +1,14 @@
-import { CustomPage } from "./custompage";
+import { redirect } from 'next/navigation';
 import { RecoilRootProvider } from '../component/recoil-root-provider'
+import { CustomPage } from './custompage';
 
 export default function Home() {
-  return (
-   <main>
-    <RecoilRootProvider>
-      <CustomPage />
-    </RecoilRootProvider>
-  </main>
-  );
+    return redirect("https://hopzie.me")
+//   return (
+//    <main>
+//     <RecoilRootProvider>
+//       <CustomPage />
+//     </RecoilRootProvider>
+//   </main>
+//   );
 }
