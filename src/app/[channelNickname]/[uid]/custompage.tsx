@@ -84,12 +84,12 @@ export function CustomPage({
             </div>
             <ContentsSection
               channel={customPage?.channel!}
-              channelNickname="@choimona"
+              channelNickname={channelNickname}
             />
           </div>
           <ShareLinkSection
             channel={customPage?.channel!}
-            channelNickname="@choimona"
+            channelNickname={channelNickname}
           />
         </div>
         <Fotter />
