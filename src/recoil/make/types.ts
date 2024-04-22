@@ -11,6 +11,7 @@ export interface Product {
     price: string | null;
     originalPrice: string | null;
     linkUrl: string;
+    description: string
 }
 
 export interface Channel {
