@@ -1,6 +1,7 @@
 "use client";
 
 import BannerSection from "@/component/bannerSection";
+import { CategorySection } from "@/component/categorySection";
 import ContentsSection from "@/component/contentsSection";
 import Fotter from "@/component/fotter";
 import ProductSection from "@/component/productSection";
@@ -59,11 +60,14 @@ export function CustomPage({
                 mb={16}
               />
             </div>
+            <div className="flex flex-row w-full">
             <SearchSection
-              placeholder="찾고있는 상품을 검색해보세요."
+              placeholder="상품을 검색해보세요."
               icon="/search.svg"
               endIcon="/xmark.circle.fill.svg"
             />
+            <CategorySection productList={customPage?.products ?? []} />
+            </div>
           </div>
           <ProductSection productList={customPage?.products ?? []} />
         </div>
