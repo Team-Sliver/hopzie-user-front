@@ -32,7 +32,7 @@ export function CustomPage({
     getCustomPageData({
       channelNickname: channelNickname,
       uid: uid,
-      referrer,
+      referrer : referrer
     }).then((data) => {
       setCustomPage(data);
     });
