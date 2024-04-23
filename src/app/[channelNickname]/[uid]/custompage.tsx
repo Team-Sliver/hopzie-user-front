@@ -25,14 +25,14 @@ export function CustomPage({
   const setCustomPage = useSetRecoilState(customPageState);
 
   useEffect(() => {
-    const referrer =
-      typeof window !== "undefined"
-        ? `?referrer=${encodeURIComponent(document.referrer)}`
-        : "";
+    // const referrer =
+    //   typeof window !== "undefined"
+    //     ? `?referrer=${encodeURIComponent(document.referrer)}`
+    //     : "";
     getCustomPageData({
       channelNickname: channelNickname,
       uid: uid,
-      referrer : referrer
+      referrer : ""
     }).then((data) => {
       setCustomPage(data);
     });
