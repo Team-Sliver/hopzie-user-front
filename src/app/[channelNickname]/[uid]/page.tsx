@@ -1,6 +1,7 @@
 import { Content } from "./content";
 import { getChannelData } from "@/lib/api/response/api-repositoy";
 import { Metadata } from "next";
+import { headers } from "next/headers";
 
 interface ChannelPageProps {
   channelNickname: string;
@@ -14,11 +15,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const channelNickname = params.channelNickname;
   const uid = params.uid;
-  // const referrer = headers().get("referer") ?? "";
+  const referrer = headers().get("referer") ?? "";
   const response = await getChannelData({
     channelNickname: channelNickname,
     uid: uid,
-    referrer: '',
+    referrer: referrer,
   });
 
   let pageTitle = decodeURIComponent(channelNickname).replace('@', '');
