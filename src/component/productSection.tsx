@@ -57,16 +57,16 @@ export function ProductCard({
           </div>
         ) : (
           <div>
-            <span
+            {/* <span
               className="text-sm font-medium text-gray-900"
               style={commonTextStyle}
-            >
+            >          
               판매 중인 상품이 아닙니다.
             </span>
             <span
               className="ml-1.5 text-base font-medium text-gray-900"
               style={commonTextStyle}
-            ></span>
+            ></span> */}
           </div>
         )}
       </div>
