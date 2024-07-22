@@ -3,6 +3,7 @@
 import BannerSection from "@/component/bannerSection";
 import { CategorySection } from "@/component/categorySection";
 import ContentsSection from "@/component/contentsSection";
+import { pageGuideTextStyle } from "@/component/fontStyle";
 import Fotter from "@/component/fotter";
 import ProductSection from "@/component/productSection";
 import { SearchSection } from "@/component/searchSection";
@@ -12,7 +13,7 @@ import {
   customPageState,
   getCustomPageData,
 } from "@/recoil/make/custom-page-server-data";
-import { useEffect} from "react";
+import { useEffect } from "react";
 import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
 
 export function CustomPage({
@@ -32,7 +33,7 @@ export function CustomPage({
     getCustomPageData({
       channelNickname: channelNickname,
       uid: uid,
-      referrer : referrer
+      referrer: referrer,
     }).then((data) => {
       setCustomPage(data);
     });
@@ -61,12 +62,28 @@ export function CustomPage({
               />
             </div>
             <div className="flex flex-row w-full">
-            <SearchSection
-              placeholder="상품을 검색해보세요."
-              icon="/search.svg"
-              endIcon="/xmark.circle.fill.svg"
-            />
-            <CategorySection productList={customPage?.products ?? []} />
+              <SearchSection
+                placeholder="상품을 검색해보세요."
+                icon="/search.svg"
+                endIcon="/xmark.circle.fill.svg"
+              />
+              <CategorySection productList={customPage?.products ?? []} />
+            </div>
+            <div className="mb-4">
+              <p
+                className="text-base text-gray-600 font-normal"
+                style={pageGuideTextStyle}
+              >
+                * 파트너스 활동을 통해 수수료를 제공받을 수 있고 이는 채널
+                운영에 도움이 됩니다.
+              </p>
+              <p
+                className="text-base text-gray-600 font-normal"
+                style={pageGuideTextStyle}
+              >
+                * 품절 및 링크가 사라진 경우. 알려주시면 수정하겠습니다.
+                감사합니다.
+              </p>
             </div>
           </div>
           <ProductSection productList={customPage?.products ?? []} />

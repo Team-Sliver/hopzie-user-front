@@ -21,7 +21,7 @@ export function SearchSection({
     };
 
     return (
-        <div className="flex flex-row items-center justify-center w-full mt-[0px] mb-8">
+        <div className="flex flex-row items-center justify-center w-full mt-[0px] mb-4">
             <form
                 className="flex w-full"
                 style={{ position: 'relative', width: '100%' }}

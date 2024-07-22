@@ -4,3 +4,11 @@ export const commonTextStyle = {
     fontFamily : "Pretendard", 
     fontStyle : "none",
 }
+
+export const pageGuideTextStyle = {
+    letterSpacing : '-0.15px', 
+    lineHeight : '24px',
+    fontFamily : "Pretendard", 
+    fontStyle : "none",
+    fontSize: "14px"
+}
