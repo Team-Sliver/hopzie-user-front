@@ -10,5 +10,5 @@ export const pageGuideTextStyle = {
     lineHeight : '24px',
     fontFamily : "Pretendard", 
     fontStyle : "none",
-    fontSize: "14px"
+    fontSize: "12px"
 }
