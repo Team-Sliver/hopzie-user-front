@@ -87,6 +87,7 @@ export function CustomPage({
             </div>
           </div>
           <ProductSection productList={customPage?.products ?? []} />
+          
         </div>
         <div className="bg-gray-100 w-full h-4 mt-[30px] mb-[50px]" />
         <div className="flex flex-col mx-[12px] justfiy-center items-center">
