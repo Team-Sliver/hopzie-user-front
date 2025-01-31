@@ -112,7 +112,7 @@ function ProductSection({ productList }: { productList: Product[] }) {
   if (productList.length == 0) {
     return (
       <div
-        className={`w-full grid lg:grid-cols-4 grid-cols-2 gap-x-[14px] gap-y-[20px] justify-between`}
+        className={`w-full grid grid-cols-2 gap-x-[14px] gap-y-[20px] justify-between`}
       >
        <SkeletonProductCard></SkeletonProductCard>
        <SkeletonProductCard></SkeletonProductCard>
