@@ -14,9 +14,9 @@ const Footer: React.FC = () => {
             이는 채널 운영에 도움이 됩니다.
             <br />
             <br />
-            이 페이지는 <a target="_blank" href="https://hopzie.me" rel="noopener noreferrer" style={{ whiteSpace: 'nowrap' }}>
+            {/* 이 페이지는 <a target="_blank" href="https://hopzie.me" rel="noopener noreferrer" style={{ whiteSpace: 'nowrap' }}>
               <strong><u>Hopzie(홉지)</u></strong>
-            </a>로 만들었습니다.
+            </a>로 만들었습니다. */}
           </p>
         </div>
       </div>
