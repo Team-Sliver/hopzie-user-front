@@ -8,8 +8,8 @@ import { Skeleton } from "@heroui/skeleton";
 import { Card } from "@heroui/react";
 
 export function SkeletonProductCard() {
-  return <div>
-     <Card className="w-[200px] space-y-5 p-4 shadow-none border border-[#D0D7DE]" radius="lg">
+  return <div className="flex flex-col group relative bg-white mb-4 max-w-52">
+     <Card className="space-y-5 p-4 shadow-none border border-[#D0D7DE]" radius="lg">
           <Skeleton className="rounded-lg">
             <div className="h-24 rounded-lg bg-default-300" />
           </Skeleton>
@@ -27,6 +27,8 @@ export function SkeletonProductCard() {
         </Card>
   </div>
 }
+
+
 
 export function ProductCard({
   product,
@@ -110,7 +112,7 @@ function ProductSection({ productList }: { productList: Product[] }) {
   if (productList.length == 0) {
     return (
       <div
-        className={`grid lg:grid-cols-4 grid-cols-2 gap-x-[14px] gap-y-[20px] justify-between`}
+        className={`w-full grid lg:grid-cols-4 grid-cols-2 gap-x-[14px] gap-y-[20px] justify-between`}
       >
        <SkeletonProductCard></SkeletonProductCard>
        <SkeletonProductCard></SkeletonProductCard>
@@ -132,6 +134,7 @@ function ProductSection({ productList }: { productList: Product[] }) {
     <div
       className={`grid lg:grid-cols-4 grid-cols-2 gap-x-[14px] gap-y-[20px] justify-between`}
     >
+       
       {filteredProducts.map((product, index) => (
         <ProductCard
           key={product.uid}

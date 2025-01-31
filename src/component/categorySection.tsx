@@ -24,7 +24,6 @@ export function CategorySection({ productList }: { productList: Product[] }) {
       aria-label="카테고리를 선택하세요."
       placeholder="카테고리"
       variant="bordered"
-    //   color="primary"
       className="h-[36px] ml-[8px] max-w-36"
       allowsCustomValue={false}
       radius="full"
@@ -38,7 +37,7 @@ export function CategorySection({ productList }: { productList: Product[] }) {
       }}
       inputProps={{
         classNames: {
-          input: "ml-0",
+          input: "ml-0 text-[14px]",
           inputWrapper: "h-[36px] border-[1px] border-[#D0D7DE] shadow-none",
         },
       }}
@@ -47,7 +46,7 @@ export function CategorySection({ productList }: { productList: Product[] }) {
       }}
     >
       {categoryList.map((category, index) => (
-        <AutocompleteItem key={category} value={category}>
+        <AutocompleteItem key={category} value={category} className="text-[14px]">
           {category}
         </AutocompleteItem>
       ))}

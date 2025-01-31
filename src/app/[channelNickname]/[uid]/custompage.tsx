@@ -49,7 +49,7 @@ export function CustomPage({
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="max-w-md border lg:border-none lg:max-w-screen-xl">
+      <div className="max-w-md lg:max-w-screen-xl">
         <div className="flex flex-col mx-[12px] justfiy-center items-center">
           <BannerSection bannerUrl={customPage?.channel.bannerUrl} />
           <div className="flex sm:max-w-md w-full flex-col justfiy-center items-center">
