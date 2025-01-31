@@ -4,6 +4,29 @@ import { commonTextStyle } from "./fontStyle";
 import { productClickUpdate } from "@/lib/api/response/api-repositoy";
 import { useRecoilState } from "recoil";
 import { categoryState, searchPageState } from "@/recoil/make/serch-page-data";
+import { Skeleton } from "@heroui/skeleton";
+import { Card } from "@heroui/react";
+
+export function SkeletonProductCard() {
+  return <div>
+     <Card className="w-[200px] space-y-5 p-4 shadow-none border border-[#D0D7DE]" radius="lg">
+          <Skeleton className="rounded-lg">
+            <div className="h-24 rounded-lg bg-default-300" />
+          </Skeleton>
+          <div className="space-y-3">
+            <Skeleton className="w-3/5 rounded-lg">
+              <div className="h-3 w-3/5 rounded-lg bg-default-200" />
+            </Skeleton>
+            <Skeleton className="w-4/5 rounded-lg">
+              <div className="h-3 w-4/5 rounded-lg bg-default-200" />
+            </Skeleton>
+            <Skeleton className="w-2/5 rounded-lg">
+              <div className="h-3 w-2/5 rounded-lg bg-default-300" />
+            </Skeleton>
+          </div>
+        </Card>
+  </div>
+}
 
 export function ProductCard({
   product,
@@ -84,7 +107,24 @@ function ProductSection({ productList }: { productList: Product[] }) {
       (category ? product.description === category : true) // 카테고리 필터 추가
   );
 
-  if (filteredProducts?.length == 0) {
+  if (productList.length == 0) {
+    return (
+      <div
+        className={`grid lg:grid-cols-4 grid-cols-2 gap-x-[14px] gap-y-[20px] justify-between`}
+      >
+       <SkeletonProductCard></SkeletonProductCard>
+       <SkeletonProductCard></SkeletonProductCard>
+       <SkeletonProductCard></SkeletonProductCard>
+       <SkeletonProductCard></SkeletonProductCard>
+       <SkeletonProductCard></SkeletonProductCard>
+       <SkeletonProductCard></SkeletonProductCard>
+       <SkeletonProductCard></SkeletonProductCard>
+       <SkeletonProductCard></SkeletonProductCard>
+      </div>
+    );
+  }
+
+  if (productList.length != 0 && filteredProducts?.length == 0) {
     return <div>검색 결과가 없습니다.</div>;
   }
 
