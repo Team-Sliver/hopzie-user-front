@@ -51,7 +51,8 @@ export function CustomPage({
     <div className="flex flex-col justify-center items-center">
       <div className="max-w-md lg:max-w-screen-xl">
         <div className="flex flex-col mx-[12px] justfiy-center items-center">
-          <BannerSection bannerUrl={customPage?.channel.bannerUrl} />
+          {/* <BannerSection bannerUrl={customPage?.channel.bannerUrl} /> */}
+          <BannerSection/>
           <div className="flex sm:max-w-md w-full flex-col justfiy-center items-center">
             <div className="flex w-full items-start justify-start">
               <BasicTitle
